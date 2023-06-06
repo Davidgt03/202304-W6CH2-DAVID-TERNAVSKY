@@ -1,5 +1,5 @@
 export type PhoneStructure = {
-  textKey: number;
-  calling: boolean;
-  hang: boolean;
+  textKey: string;
+  isCalling: boolean;
+  isHangUp: boolean;
 };
