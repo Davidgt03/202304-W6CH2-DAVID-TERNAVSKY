@@ -1,24 +1,39 @@
-import { actionTypes } from "./actions.types";
-import { PhoneStructure } from "../models/phone";
-import { keyPhoneAction } from "./actions.creator";
-import { createReducer } from "@reduxjs/toolkit";
-import * as ac from "./actions.creator";
+import { createSlice } from "@reduxjs/toolkit";
 
 export type PhoneState = {
-  phone: PhoneStructure[];
+  textKey: string;
+  isCalling: boolean;
+  isHangUp: boolean;
 };
 
 const initialState: PhoneState = {
-  phone: [],
+  textKey: "",
+  isCalling: false,
+  isHangUp: true,
 };
 
 const slicePhone = createSlice({
   name: "phone",
   initialState,
   reducers: {
-    load: (state, { payload }) => ({
+    add: (state, { payload }) => ({
       ...state,
-      phone: payload,
+      textKey: state.textKey + payload,
+    }),
+    erase: (state) => ({
+      ...state,
+      phoneNumber: state.textKey.substring(0, state.textKey.length - 1),
+    }),
+    hang: (state) => ({
+      ...state,
+      iscalling: !state.isCalling,
+    }),
+    call: (state) => ({
+      ...state,
+      iscalling: !state.isCalling,
     }),
   },
 });
+
+export const { add, erase, hang, call } = slicePhone.actions;
+export default slicePhone.reducer;

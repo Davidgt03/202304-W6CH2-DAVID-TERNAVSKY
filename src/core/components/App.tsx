@@ -1,6 +1,7 @@
-import { Actions } from "./components/actions";
-import { Info } from "./components/info";
-import { Keyboard } from "./components/keyboard";
+import { Info } from "./info/Info";
+import { Keyboard } from "./keyboard/Keyboard";
+import "../../core/components/App.css";
+import { Actions } from "./actions/actions";
 
 export function App() {
   return (
