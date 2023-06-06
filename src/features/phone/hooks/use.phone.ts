@@ -3,9 +3,7 @@ import * as action from "../redux/reducer";
 import { AppDispatch, RootState } from "../../../core/store/store";
 
 export function usePhone() {
-  const { textKey, isCalling, isHangUp } = useSelector(
-    (state: RootState) => state.phone
-  );
+  const { textKey, isCalling } = useSelector((state: RootState) => state.phone);
   const dispatch: AppDispatch = useDispatch();
   const phoneNumbers = [
     "1",
